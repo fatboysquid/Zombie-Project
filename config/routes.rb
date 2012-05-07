@@ -1,7 +1,11 @@
 ZombieProject::Application.routes.draw do
-  get "sessions/new"
 
+  root :to => 'users#new'
+  
+  get "sessions/new"
   get "home/index"
+  
+  resources :posts
   resources :reviews
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
