@@ -12,4 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui-1.8.16.custom.min.js
+//= require jquery-ui-sliderAccess.js
+//= require jquery.datePicker.js
+//= require jquery-ui-timepicker-addon.js
 //= require_tree .

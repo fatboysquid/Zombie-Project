@@ -1,0 +1,48 @@
+<div>
+	<div>Show Times</div>
+	<button type="button" id="addShow">Add Show Time</button>
+	<div id="showTimeForm">
+	<% @show = @user.showTimes.new %>
+	<%= form_for(@show) do |f| %>
+		<div class="field">
+				<%= f.label :venue %><br />
+				<%= f.text_field :venue %>
+		</div>
+		<div class="field">
+				<%= f.label "Date" %><br />
+				<%= f.datepicker :show_date, :dateFormat => "yy-mm-dd"%>
+		</div>
+		<div class="field">
+				<%= f.label "Time" %><br />
+				<input type="text" id="show_time_start_time" name="show_time[start_time]" value="" />
+		</div>
+		
+	  <div class="actions">
+	    <%= f.submit %>
+	  </div>
+	</div>
+	<% end %>
+		<script type="text/javascript">
+			$('#show_time_start_time').timepicker({
+			ampm: true,
+			addSliderAccess: true,
+			sliderAccessArgs: { touchonly: false }
+		});
+			$('#addShow').click (function () {
+				$('#showTimeForm').show();
+				$(this).hide();
+			})
+		</script>
+	
+	<table>
+	<% @show_times.each do |show| %>
+	<% if show.venue.class == String%>
+	<tr><td>Venue: </td><td><%= show.venue %></td></tr>
+	<tr><td>Date: </td><td><%= show.show_date %></td></tr>
+	<tr><td>Time: </td><td><%= show.start_time %></td></tr>
+	<tr><td colspan="2">---------------------------------------------------</td></tr>
+	<% end %>
+	
+	<% end %>
+	</table>
+</div>

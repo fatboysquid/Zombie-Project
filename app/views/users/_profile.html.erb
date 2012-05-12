@@ -1,0 +1,22 @@
+<p>Create new Post</p>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+<table class="profile">
+	<tr>
+		<td class="main">
+			<p>Posts</p>
+			Post count = <%= @user.posts.size %>
+			<% unless @user.posts.empty? %>
+			<table class="posts" summary="User Posts">
+				<%= render @user.posts %>
+			</table>
+			
+			<% end %>
+		</td>
+		<td class="sidebar round">
+			<b>Name</b> <%= @user.name %><br />
+			<b>URL</b> <%= link_to user_path(@user), @user %><br />
+			<b>Microposts</b> <%= @user.posts.count %><br />
+		</td>
+	</tr>
+</table>
